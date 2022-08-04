@@ -1,0 +1,2010 @@
+import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
+class BottomSheet extends StatefulWidget {
+  const BottomSheet({Key? key}) : super(key: key);
+
+  @override
+  State<BottomSheet> createState() => _BottomSheetState();
+}
+
+
+
+class _BottomSheetState extends State<BottomSheet> {
+  @override
+  final GFBottomSheetController _controller = GFBottomSheetController();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomSheet: GFBottomSheet(
+        controller: _controller,
+        maxContentHeight: 150,
+        stickyHeaderHeight: 100,
+        stickyHeader: Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 0)]),
+          child: const GFListTile(
+            avatar: GFAvatar(
+              backgroundImage: AssetImage('assets image here'),
+            ),
+            titleText: 'GetWidget',
+            subTitleText: 'Open source UI library',
+          ),
+        ),
+        contentBody: Container(
+          height: 200,
+          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          child: ListView(
+            shrinkWrap: true,
+            physics: const ScrollPhysics(),
+            children: const [
+              Center(
+                  child: Text(
+                'Getwidget reduces your overall app development time to minimum 30% because of its pre-build clean UI widget that you can use in flutter app development. We have spent more than 1000+ hours to build this library to make flutter developer’s life easy.',
+                style: TextStyle(
+                    fontSize: 15, wordSpacing: 0.3, letterSpacing: 0.2),
+              ))
+            ],
+          ),
+        ),
+        stickyFooter: Container(
+          color: GFColors.SUCCESS,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                'Get in touch',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              Text(
+                'info@getwidget.dev',
+                style: TextStyle(fontSize: 15, color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+        stickyFooterHeight: 50,
+      ),
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: GFColors.SUCCESS,
+          child: _controller.isBottomSheetOpened
+              ? Icon(Icons.keyboard_arrow_down)
+              : Icon(Icons.keyboard_arrow_up),
+          onPressed: () {
+            _controller.isBottomSheetOpened
+                ? _controller.hideBottomSheet()
+                : _controller.showBottomSheet();
+          }),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
+import '../Diy/Layout/radiobuttons.dart';
+import 'Gardingradiobuttons.dart';
+import 'clearing2page.dart/clearing1.dart';
+
+class Clear extends StatelessWidget {
+  const Clear({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        // ignore: prefer_const_constructors
+        title: Text(
+          "Publish an offer",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Clearing",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  "Need information",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 114, 110, 110),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  "Select Surface",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 2, 2, 2),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                GFProgressBar(
+                    percentage: 0.9,
+                    backgroundColor: Colors.black26,
+                    lineHeight: 10,
+                    circleWidth: 30,
+                    animation: true,
+                    animationDuration: 3,
+                    autoLive: true,
+                    reverse: true,
+                    fromRightToLeft: false,
+                    circleStartAngle: 45.00,
+                    progressBarColor: Color.fromARGB(255, 65, 120, 240)),
+                SizedBox(height: 20),
+                Divider(
+                  color: Colors.black,
+                ),
+                SizedBox(height: 20),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Does the jobber have to bring the equipment?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(height: 20),
+                    HomePage(),
+                    SizedBox(height: 20),
+                    Divider(
+                      color: Colors.black,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Does the jobber have to evacute waste outside the home?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(height: 20),
+                    HomePage(),
+                    SizedBox(height: 20),
+                    Divider(
+                      color: Colors.black,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "How often would you like this job to be done?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(height: 20),
+                    GardenPage(),
+                    SizedBox(height: 20),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    /*  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        height: 15,
+                        width: 300,
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                          "Next",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 238, 231, 231)),
+                        ),
+                      ),
+                    ),*/
+                  ],
+                ),
+              ]),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Clearing1()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            height: 20,
+            width: 300,
+            margin: EdgeInsets.all(20),
+            child: Text(
+              "Next",
+              style: const TextStyle(color: Color.fromARGB(255, 228, 223, 223)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Gardening/wedding.dart';
+
+import 'Clearing.dart';
+import 'Maintainancegreenspace.dart';
+import 'Terracecleaning.dart';
+import 'Tocutdwontree.dart';
+import 'Tomowthelawn.dart';
+import 'hedgetrimming.dart';
+import 'lawncare.dart';
+import 'othergardngjob.dart';
+
+
+class GardenBtn extends StatelessWidget {
+  const GardenBtn({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        // ignore: prefer_const_constructors
+        title: Text(
+          "Publish an offer",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              Card(
+                elevation: 0.5,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      "To mow the lean",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    ),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ToMowLawn()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0.5,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      "Hedge trimming",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    ),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Hedgetrim()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0.5,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      "To cut down a tree",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    ),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CuttingTree()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0.5,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      "Clearing",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    ),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Clear()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0.5,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      "Weeding",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    ),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Weedings()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0.5,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      "Maintance of green space",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    ),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const GreenSpaces()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0.5,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      "Lawn care",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    ),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Lawn()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0.5,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      "Terrace cleaning",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    ),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TerraceCleaning()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0.5,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: ListTile(
+                    title: Text(
+                      "Other gardening job ",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    ),
+                    trailing: Icon(Icons.keyboard_arrow_right),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const GardnJob()),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+
+class GardenPage extends StatefulWidget {
+  const GardenPage({Key? key}) : super(key: key);
+
+  @override
+  _GardenPageState createState() => _GardenPageState();
+}
+
+class _GardenPageState extends State<GardenPage> {
+  // The inital group value
+  String _selectedGender = 'male';
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Container(
+        child: Column(
+          children: [
+            Container(
+              child: ListTile(
+                leading: Radio<String>(
+                  value: 'Just this time',
+                  groupValue: _selectedGender,
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedGender = value!;
+                    });
+                  },
+                ),
+                title: const Text('Just this time'),
+              ),
+            ),
+            ListTile(
+              leading: Radio<String>(
+                value: '2 times a month',
+                groupValue: _selectedGender,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedGender = value!;
+                    Size(200, 300);
+                  });
+                },
+              ),
+              title: const Text('2 times a month'),
+            ),
+            Container(
+              child: ListTile(
+                leading: Radio<String>(
+                  value: '1 time per week',
+                  groupValue: _selectedGender,
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedGender = value!;
+                    });
+                  },
+                ),
+                title: const Text('1 time per week'),
+              ),
+            ),
+            Container(
+              child: ListTile(
+                leading: Radio<String>(
+                  value: 'Several times a week',
+                  groupValue: _selectedGender,
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedGender = value!;
+                    });
+                  },
+                ),
+                title: const Text('Several times a week'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+
+class HedgePage extends StatefulWidget {
+  const HedgePage({Key? key}) : super(key: key);
+
+  @override
+  _HedgePageState createState() => _HedgePageState();
+}
+
+class _HedgePageState extends State<HedgePage> {
+  // The inital group value
+  String _selectedGender = 'male';
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Container(
+        child: Column(
+          children: [
+            Container(
+              child: ListTile(
+                leading: Radio<String>(
+                  value: 'Small',
+                  groupValue: _selectedGender,
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedGender = value!;
+                    });
+                  },
+                ),
+                title: const Text('Small'),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 160),
+              child: Text(
+                "(Between 1 and 1.5)",
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            ListTile(
+              leading: Radio<String>(
+                value: '2 times a month',
+                groupValue: _selectedGender,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedGender = value!;
+                    Size(200, 300);
+                  });
+                },
+              ),
+              title: const Text('Mean'),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 160),
+              child: Text(
+                "(Between 1.5 and 2)",
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Container(
+              child: ListTile(
+                leading: Radio<String>(
+                  value: '1 time per week',
+                  groupValue: _selectedGender,
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedGender = value!;
+                    });
+                  },
+                ),
+                title: const Text('Big'),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 160),
+              child: Text(
+                "(Between 2 and 3)",
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Container(
+              child: ListTile(
+                leading: Radio<String>(
+                  value: 'Several times a week',
+                  groupValue: _selectedGender,
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedGender = value!;
+                    });
+                  },
+                ),
+                title: const Text('Very tall'),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 160),
+              child: Text(
+                "(more then 3m)",
+                style: TextStyle(color: Color.fromARGB(255, 231, 219, 219)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
+import '../Diy/Layout/radiobuttons.dart';
+import 'hedgeradiobutton.dart';
+import 'hedgetrming2.dart/hedgetrimng1.dart';
+
+class Hedgetrim extends StatelessWidget {
+  const Hedgetrim({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        // ignore: prefer_const_constructors
+        title: Text(
+          "Publish an offer",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Hedge trimming",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Need information",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 114, 110, 110),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Select Surface",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 2, 2, 2),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                GFProgressBar(
+                    percentage: 0.9,
+                    backgroundColor: Colors.black26,
+                    lineHeight: 10,
+                    circleWidth: 30,
+                    animation: true,
+                    animationDuration: 3,
+                    autoLive: true,
+                    reverse: true,
+                    fromRightToLeft: false,
+                    circleStartAngle: 45.00,
+                    progressBarColor: Color.fromARGB(255, 65, 120, 240)),
+                SizedBox(height: 20),
+                Divider(
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Choose the height of hedge",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                HedgePage(),
+                SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Does the jobber have to bring the equipment?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    HomePage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Divider(
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "Does the jobber have to evacute waste outside the home?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    HomePage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    /* ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        height: 15,
+                        width: 300,
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                          "Next",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 230, 222, 222)),
+                        ),
+                      ),
+                    ),*/
+                  ],
+                ),
+              ]),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Hedgetrim1()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            height: 20,
+            width: 300,
+            margin: EdgeInsets.all(20),
+            child: Text(
+              "Next",
+              style: const TextStyle(color: Color.fromARGB(255, 228, 223, 223)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
+import 'Gardingradiobuttons.dart';
+import 'lawncare2page.dart/lawncare1.dart';
+
+class Lawn extends StatelessWidget {
+  const Lawn({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        // ignore: prefer_const_constructors
+        title: Text(
+          "Publish an offer",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Lawn care",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Need information",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 114, 110, 110),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "How often would you like this job to be done?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GardenPage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    /*ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        height: 15,
+                        width: 300,
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                          "Next",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 240, 235, 235)),
+                        ),
+                      ),
+                    ),*/
+                  ],
+                ),
+              ]),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Lawncare1()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            height: 20,
+            width: 300,
+            margin: EdgeInsets.all(20),
+            child: Text(
+              "Next",
+              style: const TextStyle(color: Color.fromARGB(255, 228, 223, 223)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
+import 'Gardingradiobuttons.dart';
+import 'maintainceofgreenspaces2page.dart/greenspac1.dart';
+
+class GreenSpaces extends StatelessWidget {
+  const GreenSpaces({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        // ignore: prefer_const_constructors
+        title: Text(
+          "Publish an offer",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Maintinance of green spaces",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Need information",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 114, 110, 110),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "How often would you like this job to be done?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GardenPage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    // ignore: avoid_unnecessary_containers
+                    /* ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        height: 15,
+                        width: 300,
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                          "Next",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 240, 235, 235)),
+                        ),
+                      ),
+                    ),*/
+                  ],
+                ),
+              ]),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Greenspace1()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            height: 20,
+            width: 300,
+            margin: EdgeInsets.all(20),
+            child: Text(
+              "Next",
+              style: const TextStyle(color: Color.fromARGB(255, 228, 223, 223)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
+import 'othergardeningjob2.dart/gardeningjob1.dart';
+
+class GardnJob extends StatelessWidget {
+  const GardnJob({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        // ignore: prefer_const_constructors
+        title: Text(
+          "Publish an offer",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Other gardening job",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Need information",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 114, 110, 110),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                RichText(
+                  text: const TextSpan(
+                      text: 'Description',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: ' ',
+                          style: const TextStyle(
+                              color: Colors.blueAccent, fontSize: 20),
+                        ),
+                      ]),
+                ),
+                const SizedBox(height: 20),
+                Wrap(
+                  children: [
+                    Card(
+                        child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: TextField(
+                        maxLines: 8, //or null
+                        decoration:
+                            InputDecoration.collapsed(hintText: "Description"),
+                      ),
+                    )),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                /* ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Home()),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    height: 15,
+                    width: 300,
+                    margin: EdgeInsets.all(20),
+                    child: Text(
+                      "Next",
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 240, 235, 235)),
+                    ),
+                  ),
+                ),*/
+              ]),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Gardenjob1()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            height: 20,
+            width: 300,
+            margin: EdgeInsets.all(20),
+            child: Text(
+              "Next",
+              style: const TextStyle(color: Color.fromARGB(255, 228, 223, 223)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
+import 'Gardingradiobuttons.dart';
+import 'terrace2pages.dart/terraceclean1.dart';
+
+class TerraceCleaning extends StatelessWidget {
+  const TerraceCleaning({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        // ignore: prefer_const_constructors
+        title: Text(
+          "Publish an offer",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Terrace cleaning",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Need information",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 114, 110, 110),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "How often would you like this job to be done?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GardenPage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    /* ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        height: 15,
+                        width: 300,
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                          "Next",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 240, 235, 235)),
+                        ),
+                      ),
+                    ),*/
+                  ],
+                ),
+              ]),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Teraceclean1()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            height: 20,
+            width: 300,
+            margin: EdgeInsets.all(20),
+            child: Text(
+              "Next",
+              style: const TextStyle(color: Color.fromARGB(255, 228, 223, 223)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
+import '../Diy/Layout/addsub.dart';
+import '../Diy/Layout/radiobuttons.dart';
+import 'tocutdowntree2page.dart/tocutdown1.dart';
+
+class CuttingTree extends StatelessWidget {
+  const CuttingTree({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        // ignore: prefer_const_constructors
+        title: Text(
+          "Publish an offer",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "To cut down a tree",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Need information",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 114, 110, 110),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Numbers of trees to be cut",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 2, 2, 2),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 29,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                GFProgressBar(
+                    percentage: 0.9,
+                    backgroundColor: Colors.black26,
+                    lineHeight: 10,
+                    circleWidth: 30,
+                    animation: true,
+                    animationDuration: 3,
+                    autoLive: true,
+                    reverse: true,
+                    fromRightToLeft: false,
+                    circleStartAngle: 45.00,
+                    progressBarColor: Color.fromARGB(255, 65, 120, 240)),
+                SizedBox(height: 20),
+                Divider(
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Small",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                AddSub(),
+                SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Average",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                AddSub(),
+                SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Large",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                AddSub(),
+                SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Does the jobber have to bring the equipment?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    HomePage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Divider(
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "Does the jobber have to evacute waste outside the home?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    HomePage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    /*  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        height: 15,
+                        width: 300,
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                          "Next",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 243, 234, 234)),
+                        ),
+                      ),
+                    ),*/
+                  ],
+                ),
+              ]),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Tocutatree1()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            height: 20,
+            width: 300,
+            margin: EdgeInsets.all(20),
+            child: Text(
+              "Next",
+              style: const TextStyle(color: Color.fromARGB(255, 228, 223, 223)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
+import '../Diy/Layout/radiobuttons.dart';
+import 'tomowlawn2pages.dart/mowthelawn1.dart';
+
+class ToMowLawn extends StatelessWidget {
+  const ToMowLawn({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        // ignore: prefer_const_constructors
+        title: Text(
+          "Publish an offer",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Interior painting",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Need information",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 114, 110, 110),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Select Surface",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 2, 2, 2),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                GFProgressBar(
+                    percentage: 0.9,
+                    backgroundColor: Colors.black26,
+                    lineHeight: 10,
+                    circleWidth: 30,
+                    animation: true,
+                    animationDuration: 3,
+                    autoLive: true,
+                    reverse: true,
+                    fromRightToLeft: false,
+                    circleStartAngle: 45.00,
+                    progressBarColor: Color.fromARGB(255, 65, 120, 240)),
+                SizedBox(height: 20),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Does the jobber have to bring the equipment?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    HomePage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "Does the jobber have to evacute waste outside the home?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    HomePage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "How often would you like this job to be done?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    HomePage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    /*  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        height: 15,
+                        width: 300,
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                          "Next",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 222, 211, 211)),
+                        ),
+                      ),
+                    ),*/
+                  ],
+                ),
+              ]),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Mowlawn1()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            height: 20,
+            width: 300,
+            margin: EdgeInsets.all(20),
+            child: Text(
+              "Next",
+              style: const TextStyle(color: Color.fromARGB(255, 228, 223, 223)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
+
+import '../Diy/Layout/radiobuttons.dart';
+import 'Gardingradiobuttons.dart';
+import 'weddingpage2.dart/weeding1.dart';
+
+class Weedings extends StatelessWidget {
+  const Weedings({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        // ignore: prefer_const_constructors
+        title: Text(
+          "Publish an offer",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Weeding",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Need information",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 114, 110, 110),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Select Surface",
+                  style: TextStyle(
+                    color: Color.fromARGB(221, 2, 2, 2),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                GFProgressBar(
+                    percentage: 0.9,
+                    backgroundColor: Colors.black26,
+                    lineHeight: 10,
+                    circleWidth: 30,
+                    animation: true,
+                    animationDuration: 3,
+                    autoLive: true,
+                    reverse: true,
+                    fromRightToLeft: false,
+                    circleStartAngle: 45.00,
+                    progressBarColor: Color.fromARGB(255, 65, 120, 240)),
+                SizedBox(height: 20),
+                Divider(
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Does the jobber have to evacute waste outside the home?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    HomePage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Divider(
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "How often would you like this job to be done?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GardenPage(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    /* ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        height: 15,
+                        width: 300,
+                        margin: EdgeInsets.all(20),
+                        child: Text(
+                          "Next",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 240, 235, 235)),
+                        ),
+                      ),
+                    ),*/
+                  ],
+                ),
+              ]),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Weeding1()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+            ),
+            height: 20,
+            width: 300,
+            margin: EdgeInsets.all(20),
+            child: Text(
+              "Next",
+              style: const TextStyle(color: Color.fromARGB(255, 228, 223, 223)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
